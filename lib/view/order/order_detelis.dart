@@ -240,39 +240,6 @@ class OrderDetelis extends StatelessWidget {
                                   SizedBox(
                                     height: 20.h,
                                   ),
-
-                                  // _rowText(
-                                  //     topPadeing: 13,
-                                  //     Rchildren: Text(
-                                  //       'السعر الكلي ',
-                                  //       style: TextStyle(
-                                  //           fontSize: 14.sp,
-                                  //           color: Colors.black
-                                  //               .withOpacity(0.5)),
-                                  //     ),
-                                  //     Lchildren: Text(
-                                  //       '${NumberFormat('#,##0', 'en_US').format(double.parse(order.totlPrice.toString()))}',
-                                  //       style: TextStyle(
-                                  //           fontSize: 12.sp,
-                                  //           fontWeight: FontWeight.w800),
-                                  //       maxLines: 1,
-                                  //     )),
-                                  // _rowText(
-                                  //     topPadeing: 13,
-                                  //     Rchildren: Text(
-                                  //       'الخصم',
-                                  //       style: TextStyle(
-                                  //           fontSize: 14.sp,
-                                  //           color: Colors.black
-                                  //               .withOpacity(0.5)),
-                                  //     ),
-                                  //     Lchildren: Text(
-                                  //       maxLines: 1,
-                                  //       '0',
-                                  //       style: TextStyle(
-                                  //           fontSize: 12.sp,
-                                  //           fontWeight: FontWeight.w800),
-                                  //     )),
                                   Divider(
                                     color: Colors.grey.withOpacity(0.3),
                                   ),
