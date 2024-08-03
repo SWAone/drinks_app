@@ -1,0 +1,85 @@
+name: prostore
+description: A new Flutter project.
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+15
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.1.0
+  get_storage: ^2.1.1
+  cached_network_image: ^3.3.1
+  lottie: ^2.7.0
+  flutter_image_slideshow: ^0.1.6
+  dropdown_search: ^5.0.6
+  rename: ^3.0.2
+  carousel_slider: ^4.2.1
+ 
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  hexcolor: ^3.0.1
+  flutter_screenutil: ^5.7.0
+  get: ^4.6.5
+  shimmer: ^3.0.0
+  dio: ^5.4.1
+  card_swiper: ^3.0.1
+  flutter_lints: ^2.0.0
+  intl: ^0.18.1
+  firebase_core: ^2.17.0
+  cloud_firestore: ^4.9.3
+  firebase_messaging: ^14.7.0
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/acount_icons/appIcon.png"
+  background_color: "#1F2C4F"
+  min_sdk_android: 21
+
+
+
+flutter:
+
+
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/home_icon/
+    - assets/navbar_icon/
+    - assets/product_full_icon/
+    - assets/cart_icons/
+    - assets/order_icon/
+    - assets/seach_icon/
+    - assets/acount_icons/
+    - assets/anmtions/
+    - assets/anmtions/home_anmtion/
+    - assets/dilog_icon/
+  fonts:
+    - family: LamaSans
+      fonts:
+        - asset: fonts/LamaSans-SemiBold.ttf
+    - family: cairo
+      fonts:
+        - asset: fonts/Cairo-Black.ttf
+          weight: 900
+        - asset: fonts/Cairo-Bold.ttf
+          weight: 700
+    - family: beInBlack
+      fonts:
+        - asset: fonts/beIN Black .ttf
+          weight: 500
+
