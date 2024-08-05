@@ -45,7 +45,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/acount_icons/appIcon.png"
+  image_path: "assets/acount_icons/photo_2024-05-12_16-05-24.jpg"
   background_color: "#1F2C4F"
   min_sdk_android: 21
 
@@ -68,6 +68,7 @@ flutter:
     - assets/anmtions/
     - assets/anmtions/home_anmtion/
     - assets/dilog_icon/
+    - assets/theam/
   fonts:
     - family: LamaSans
       fonts:

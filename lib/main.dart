@@ -16,6 +16,7 @@ NavBarController navBarController = Get.put(NavBarController());
 GetStorage box = GetStorage();
 var auth;
 int lanIndx = 0;
+int thaem = 0;
 User userInfo = User.fromJson({"name": 'null', "phone": "-1"});
 bool isGeust = false;
 void main() async {

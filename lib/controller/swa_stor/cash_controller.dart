@@ -4,6 +4,7 @@ import 'package:prostore/api/api.dart';
 import 'package:prostore/controller/order_controleer.dart';
 import 'package:prostore/controller/swa_stor/home_c/home_controller.dart';
 import 'package:prostore/controller/swa_stor/nav/nav_bar_controller.dart';
+import 'package:prostore/fcm.dart';
 import 'package:prostore/main.dart';
 import 'package:prostore/model/item_model.dart';
 import 'package:prostore/model/order_model.dart';
@@ -151,6 +152,12 @@ class CashController extends GetxController {
       },
       sucsues: (respons) async {
         print(respons['result']);
+        FCMService fcm = FCMService();
+
+        await fcm.sendNotifications(
+            body: 'هناك طلب من ${userInfo.name}',
+            title: 'طلب جديد',
+            topc: 'order');
         orderController.orders.add(Order.fromJson(respons['result']));
         orderController.update();
         orderController.counter += 1;

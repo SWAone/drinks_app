@@ -6,8 +6,9 @@ import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import '../const/app_color.dart';
 
+// http://10.0.2.2:80
 class Api {
-  static String apiUrl = 'http://10.0.2.2:80';
+  static String apiUrl = 'http://194.163.183.145';
   static String imgsPath = '$apiUrl/public/imgs/';
 
   static fetchData({String path = '', String lableReslut = 'result'}) async {

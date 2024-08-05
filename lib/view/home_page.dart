@@ -106,7 +106,10 @@ class HomePageSc extends StatelessWidget {
                             SizedBox(
                               height: 9.h,
                             ),
-                            Center(child: serch())
+                            Center(
+                                child: thaem == 0
+                                    ? serch(thaem)
+                                    : serchThem(thaem))
                           ],
                         ),
                       ),
@@ -149,8 +152,8 @@ class HomePageSc extends StatelessWidget {
                                     child: Padding(
                                         padding: EdgeInsets.only(right: 10.w),
                                         child: catoCircl(
-                                            '${Api.imgsPath}${controler.categores[0].img!}',
-                                            controler.categores[0].title!)),
+                                            '${Api.imgsPath}${controler.categores[index].img!}',
+                                            controler.categores[index].title!)),
                                   );
                                 },
                               ),
@@ -208,42 +211,125 @@ class HomePageSc extends StatelessWidget {
     ));
   }
 
-  Widget serch() {
+  Widget serchThem(them) {
+    return them == 2
+        ? serch(2)
+        : Stack(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 10.h),
+                child: Container(
+                  margin: EdgeInsets.only(left: 0.w),
+                  child: SizedBox(
+                    height: 40.h,
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        margin: EdgeInsets.only(right: 10.w),
+                        width: 270.45.w,
+                        height: 40.h,
+                        decoration: BoxDecoration(
+                            color: HexColor('#FAFAFA'),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  blurRadius: 4),
+                            ],
+                            borderRadius: BorderRadius.circular(15.sp)),
+                        child: TextFormField(
+                            onFieldSubmitted: (value) {
+                              homeController.skipSerch = 0;
+                              homeController.serachEle(
+                                  text: value, lableResult: 'items');
+                              homeController.isSerch = true;
+                              homeController.serchText = value;
+                              Get.to(FilterdProdect(
+                                  items: homeController.serachElemnt));
+                            },
+                            decoration: InputDecoration(
+                                prefixIcon: Padding(
+                                  padding:
+                                      EdgeInsets.only(top: 10.h, bottom: 10.h),
+                                  child: Image.asset(
+                                    'assets/seach_icon/Union (1).png',
+                                    width: 10.w,
+                                    height: 10.h,
+                                  ),
+                                ),
+                                hintStyle: TextStyle(color: Colors.grey),
+                                contentPadding: EdgeInsets.all(0),
+                                hintText: 'ابحث عن مشروبك المفضل',
+                                border: OutlineInputBorder(
+                                    borderSide: BorderSide.none))),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              them == 1
+                  ? Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: 10.h),
+                        child: Image.asset(
+                          'assets/theam/heart on ground.png',
+                          width: 103.w,
+                          height: 60.h,
+                        ),
+                      ),
+                    )
+                  : SizedBox.shrink()
+            ],
+          );
+  }
+
+  Widget serch(them) {
     return Container(
       margin: EdgeInsets.only(left: 0.w),
       child: SizedBox(
         width: 329.w,
         height: 40.h,
-        child: Container(
-          width: 263.45.w,
-          height: 40.h,
-          decoration: BoxDecoration(
-              color: HexColor('#FAFAFA'),
-              boxShadow: [
-                BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 4),
-              ],
-              borderRadius: BorderRadius.circular(15.sp)),
-          child: TextFormField(
-              onFieldSubmitted: (value) {
-                homeController.skipSerch = 0;
-                homeController.serachEle(text: value, lableResult: 'items');
-                homeController.isSerch = true;
-                homeController.serchText = value;
-                Get.to(FilterdProdect(items: homeController.serachElemnt));
-              },
-              decoration: InputDecoration(
-                  prefixIcon: Padding(
-                    padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
-                    child: Image.asset(
-                      'assets/seach_icon/Union (1).png',
-                      width: 10.w,
-                      height: 10.h,
-                    ),
-                  ),
-                  hintStyle: TextStyle(color: Colors.grey),
-                  contentPadding: EdgeInsets.all(0),
-                  hintText: 'ابحث عن مشروبك المفضل',
-                  border: OutlineInputBorder(borderSide: BorderSide.none))),
+        child: Stack(
+          children: [
+            Container(
+              width: 320.45.w,
+              height: 40.h,
+              decoration: BoxDecoration(
+                  color: HexColor('#FAFAFA'),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey.withOpacity(0.5), blurRadius: 4),
+                  ],
+                  borderRadius: BorderRadius.circular(15.sp)),
+              child: TextFormField(
+                  onFieldSubmitted: (value) {
+                    homeController.skipSerch = 0;
+                    homeController.serachEle(text: value, lableResult: 'items');
+                    homeController.isSerch = true;
+                    homeController.serchText = value;
+                    Get.to(FilterdProdect(items: homeController.serachElemnt));
+                  },
+                  decoration: InputDecoration(
+                      suffixIcon: thaem != 0
+                          ? Image.asset(
+                              'assets/theam/pngwing.com (6) 1.png',
+                              width: 100.w,
+                            )
+                          : null,
+                      prefixIcon: Padding(
+                        padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
+                        child: Image.asset(
+                          'assets/seach_icon/Union (1).png',
+                          width: 10.w,
+                          height: 10.h,
+                        ),
+                      ),
+                      hintStyle: TextStyle(color: Colors.grey),
+                      contentPadding: EdgeInsets.all(0),
+                      hintText: 'ابحث عن مشروبك المفضل',
+                      border: OutlineInputBorder(borderSide: BorderSide.none))),
+            ),
+          ],
         ),
       ),
     );

@@ -84,15 +84,6 @@ class CartSc extends StatelessWidget {
                           : Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
-                                  child: Center(
-                                    child: LottieBuilder.asset(
-                                        'assets/anmtions/home_anmtion/cart_empty.json'),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 40.h,
-                                ),
                                 Center(child: Text('لم تضف عنصر الى السلة')),
                               ],
                             ),

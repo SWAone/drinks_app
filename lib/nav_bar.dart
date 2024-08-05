@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:prostore/controller/order_controleer.dart';
 import 'package:prostore/controller/swa_stor/nav/nav_bar_controller.dart';
+import 'package:prostore/main.dart';
 import 'package:prostore/view/home_page.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:prostore/view/cart/cart_sc.dart';
@@ -30,6 +31,10 @@ class NavBar extends StatelessWidget {
           body: sc[controller.pageIndex],
           bottomNavigationBar: Container(
               decoration: BoxDecoration(
+                image: thaem == 2
+                    ? DecorationImage(
+                        image: AssetImage('assets/theam/pngwing.com (3) 1.png'))
+                    : null,
                 color: HexColor('#354369'),
               ),
               child: Padding(

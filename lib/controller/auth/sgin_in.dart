@@ -39,12 +39,16 @@ class SginInController extends GetxController {
 
     if (keyy.currentState!.validate()) {
       keyy.currentState!.save();
+      String modifiedIsoString =
+          '2024' + firstTime!.toIso8601String().substring(4);
 
+      // طباعة النتيجة
+      print(modifiedIsoString);
       final Map<String, dynamic> registrationData = {
         "phone": phone,
         "password": password,
         "name": name,
-        "birthday": firstTime!.toIso8601String() ?? '',
+        "birthday": modifiedIsoString ?? '',
         "number_of_order": 0,
         "state": loction ?? ''
       };

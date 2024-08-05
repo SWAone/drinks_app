@@ -34,11 +34,11 @@ class AppProduct extends StatelessWidget {
           Container(
             decoration: BoxDecoration(boxShadow: [
               BoxShadow(
-                  color: HexColor('#000000').withOpacity(0.2), blurRadius: 7)
-            ], color: Colors.white),
+                  color: HexColor('#000000').withOpacity(0.25), blurRadius: 3)
+            ], color: Colors.white, borderRadius: BorderRadius.circular(11.r)),
             child: CachedNetworkImage(
-              width: 150.w,
-              height: 164.h,
+              width: 144.w,
+              height: 180.h,
               imageUrl: "${Api.imgsPath}${prodct.imags}",
               errorWidget: (context, url, error) => Icon(Icons.error),
             ),

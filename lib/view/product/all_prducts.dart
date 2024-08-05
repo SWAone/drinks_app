@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
+import 'package:prostore/const/app_color.dart';
 import 'package:prostore/controller/swa_stor/home_c/home_controller.dart';
 import 'package:prostore/model/category_model.dart';
 import 'package:prostore/model/item_model.dart';
@@ -21,8 +22,8 @@ class AllProductsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        systemNavigationBarDividerColor: Colors.white));
+        statusBarColor: Color(0xFFC0D3E4),
+        systemNavigationBarDividerColor: AppColor.primaryColor));
     return SafeArea(
         child: Scaffold(
       backgroundColor: Colors.white,

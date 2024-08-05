@@ -19,7 +19,7 @@ class SginUp2 extends StatelessWidget {
               child: Stack(
                 children: [
                   Image.asset(
-                    'assets/home_icon/pexels-cottonbro-5590971 (1).jpg',
+                    'assets/order_icon/abc.jpg',
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),

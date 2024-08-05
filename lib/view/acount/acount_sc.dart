@@ -92,275 +92,416 @@ class AcountSc extends StatelessWidget {
                                 init: SetingController(),
                                 builder: (controler) {
                                   return !isGeust
-                                      ? Column(
+                                      ? Stack(
                                           children: [
-                                            SizedBox(
-                                              height: 46.h,
-                                            ),
-                                            Text(
-                                              'المعلومات الشخصية',
-                                              style: TextStyle(fontSize: 20.sp),
-                                            ),
-                                            SizedBox(
-                                              height: 30.h,
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 20.w),
-                                              child: Stack(
-                                                children: [
-                                                  Container(
-                                                    width: double.infinity,
-                                                    margin: EdgeInsets.only(
-                                                        top: 50.h),
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.r),
-                                                      gradient: LinearGradient(
-                                                        colors: [
-                                                          Color(0xFFC0D3E4),
-                                                          Color(0xFFD3C6E0),
-                                                          Color(0xFFD3C6E0),
-                                                          Color(0xFFC0D3E4),
-                                                        ],
-                                                        stops: [
-                                                          0.0,
-                                                          0.2,
-                                                          0.5,
-                                                          1.0
-                                                        ],
-                                                        begin:
-                                                            Alignment.topCenter,
-                                                        end: Alignment
-                                                            .bottomCenter,
-                                                      ),
-                                                    ),
-                                                    child: Column(
-                                                      children: [
-                                                        SizedBox(
-                                                          height: 40.h,
-                                                        ),
-                                                        SizedBox(
-                                                          width:
-                                                              double.infinity,
-                                                          child: Center(
-                                                            child: Text(
-                                                              userInfo.name!,
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      20.sp),
-                                                              maxLines: 2,
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          width:
-                                                              double.infinity,
-                                                          child: Center(
-                                                            child: Text(
-                                                              userInfo.phone
-                                                                  .toString(),
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      15.sp),
-                                                              maxLines: 2,
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          height: 10.h,
-                                                        ),
-                                                        SizedBox(
-                                                          width:
-                                                              double.infinity,
-                                                          child: Center(
-                                                            child: Text(
-                                                              'الطلبات المحققة ${userInfo.number_of_order}',
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      16.sp),
-                                                              maxLines: 2,
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          height: 10.h,
-                                                        )
-                                                      ],
-                                                    ),
+                                            Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: 90.h,
+                                                ),
+                                                Text(
+                                                  'المعلومات الشخصية',
+                                                  style: TextStyle(
+                                                      fontSize: 20.sp),
+                                                ),
+                                                SizedBox(
+                                                  height: 30.h,
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                    horizontal: 20.w,
                                                   ),
-                                                  Align(
-                                                    alignment:
-                                                        Alignment.topCenter,
-                                                    child: CircleAvatar(
-                                                      radius: 40.r,
-                                                      child: Image.asset(
-                                                        'assets/acount_icons/user-svgrepo-com.png',
-                                                      ),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              width: 327.w,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        10.sp),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsets.only(
-                                                    left: 0.w,
-                                                    top: 16.h,
-                                                    bottom: 12.h,
-                                                    right: 0.w),
-                                                child: SizedBox(
-                                                  child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
+                                                  child: Stack(
                                                     children: [
-                                                      _infoSetting(
-                                                          onTap: () {
-                                                            Get.defaultDialog(
-                                                                title:
-                                                                    'سياسة الخصوصية',
-                                                                content:
-                                                                    Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                          .all(
-                                                                          8.0),
-                                                                  child: Text(
-                                                                    'خصوصية العمل  ',
-                                                                    style: TextStyle(
-                                                                        fontSize:
-                                                                            20.sp),
+                                                      Container(
+                                                        child: Stack(
+                                                          children: [
+                                                            Padding(
+                                                              padding: EdgeInsets
+                                                                  .only(
+                                                                      left:
+                                                                          13.w,
+                                                                      right:
+                                                                          13.w),
+                                                              child: Container(
+                                                                padding: EdgeInsets
+                                                                    .only(
+                                                                        bottom:
+                                                                            40.h),
+                                                                width: double
+                                                                    .infinity,
+                                                                margin: EdgeInsets
+                                                                    .only(
+                                                                        top: 50
+                                                                            .h),
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              10.r),
+                                                                  gradient:
+                                                                      LinearGradient(
+                                                                    colors: [
+                                                                      Color(
+                                                                          0xFFC0D3E4),
+                                                                      Color(
+                                                                          0xFFD3C6E0),
+                                                                      Color(
+                                                                          0xFFD3C6E0),
+                                                                      Color(
+                                                                          0xFFC0D3E4),
+                                                                    ],
+                                                                    stops: [
+                                                                      0.0,
+                                                                      0.2,
+                                                                      0.5,
+                                                                      1.0
+                                                                    ],
+                                                                    begin: Alignment
+                                                                        .topCenter,
+                                                                    end: Alignment
+                                                                        .bottomCenter,
                                                                   ),
-                                                                ));
-                                                          },
-                                                          url:
-                                                              'assets/order_icon/notebook_fill.png',
-                                                          lable:
-                                                              'سياسة الخصوصية'),
-                                                      SizedBox(
-                                                        height: 6.h,
+                                                                ),
+                                                                child: Column(
+                                                                  children: [
+                                                                    SizedBox(
+                                                                      height:
+                                                                          40.h,
+                                                                    ),
+                                                                    SizedBox(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      child:
+                                                                          Center(
+                                                                        child:
+                                                                            Text(
+                                                                          userInfo
+                                                                              .name!,
+                                                                          style:
+                                                                              TextStyle(fontSize: 20.sp),
+                                                                          maxLines:
+                                                                              2,
+                                                                          textAlign:
+                                                                              TextAlign.center,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    SizedBox(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      child:
+                                                                          Center(
+                                                                        child:
+                                                                            Text(
+                                                                          userInfo
+                                                                              .phone
+                                                                              .toString(),
+                                                                          style:
+                                                                              TextStyle(fontSize: 15.sp),
+                                                                          maxLines:
+                                                                              2,
+                                                                          textAlign:
+                                                                              TextAlign.center,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    SizedBox(
+                                                                      height:
+                                                                          10.h,
+                                                                    ),
+                                                                    SizedBox(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      child:
+                                                                          Center(
+                                                                        child:
+                                                                            Text(
+                                                                          'الطلبات المحققة ${userInfo.number_of_order}',
+                                                                          style:
+                                                                              TextStyle(fontSize: 16.sp),
+                                                                          maxLines:
+                                                                              2,
+                                                                          textAlign:
+                                                                              TextAlign.center,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    SizedBox(
+                                                                      height:
+                                                                          10.h,
+                                                                    )
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            thaem == 1
+                                                                ? Align(
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .bottomRight,
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsets.only(
+                                                                          top: 60
+                                                                              .h),
+                                                                      child: Image
+                                                                          .asset(
+                                                                        'assets/theam/Group 33143.png',
+                                                                        height:
+                                                                            70.h,
+                                                                        width:
+                                                                            27.w,
+                                                                      ),
+                                                                    ),
+                                                                  )
+                                                                : SizedBox
+                                                                    .shrink(),
+                                                            thaem == 1
+                                                                ? Align(
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .bottomLeft,
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsets.only(
+                                                                          top: 140
+                                                                              .h),
+                                                                      child: Image
+                                                                          .asset(
+                                                                        'assets/theam/Group 33143.png',
+                                                                        height:
+                                                                            70.h,
+                                                                        width:
+                                                                            27.w,
+                                                                      ),
+                                                                    ),
+                                                                  )
+                                                                : SizedBox
+                                                                    .shrink(),
+                                                          ],
+                                                        ),
                                                       ),
-                                                      _infoSetting(
-                                                          onTap: () {
-                                                            showDialog(
-                                                              context:
-                                                                  Get.context!,
-                                                              builder:
-                                                                  (BuildContext
-                                                                      context) {
-                                                                return CustomDialog(
-                                                                  icoImage:
-                                                                      'assets/dilog_icon/error.png',
-                                                                  onPressed:
-                                                                      () {
-                                                                    Get.back();
-                                                                    box.remove(
-                                                                        'userId');
-                                                                    box.remove(
-                                                                        'orrderss');
-                                                                    box.remove(
-                                                                        'loction');
-
-                                                                    Get.offAll(
-                                                                        SginUp2());
-                                                                    isGeust =
-                                                                        false;
-                                                                  },
-                                                                  btnText:
-                                                                      'نعم',
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          15.sp,
-                                                                      color: Colors
-                                                                          .red),
-                                                                  title:
-                                                                      'تسجيل الخروج',
-                                                                  body:
-                                                                      'هل انت متاكد',
-                                                                ); // إظهار الدايلوج المخصص
-                                                              },
-                                                            );
-                                                          },
-                                                          url:
-                                                              'assets/acount_icons/Logout.png',
-                                                          lable:
-                                                              'تسجيل الخروج'),
-                                                      SizedBox(
-                                                        height: 6.h,
+                                                      Align(
+                                                        alignment:
+                                                            Alignment.topCenter,
+                                                        child: CircleAvatar(
+                                                          backgroundColor:
+                                                              HexColor(
+                                                                  '#C0D3E4'),
+                                                          radius: 40.r,
+                                                          child: Image.asset(
+                                                            'assets/acount_icons/user-svgrepo-com.png',
+                                                            color: Colors.grey,
+                                                          ),
+                                                        ),
                                                       ),
-                                                      _infoSetting(
-                                                          onTap: () {
-                                                            showDialog(
-                                                              context:
-                                                                  Get.context!,
-                                                              builder:
-                                                                  (BuildContext
-                                                                      context) {
-                                                                return CustomDialog(
-                                                                  icoImage:
-                                                                      'assets/dilog_icon/error.png',
-                                                                  onPressed:
-                                                                      () async {
-                                                                    Get.back();
-                                                                    box.remove(
-                                                                        'userId');
-
-                                                                    box.remove(
-                                                                        'orrderss');
-                                                                    Get.offAll(
-                                                                        SginUp2());
-                                                                    isGeust =
-                                                                        false;
-                                                                    var ssd = await Api
-                                                                        .fetchData(
-                                                                            path:
-                                                                                '/user/del/${userInfo.id}');
-                                                                    print(ssd);
-                                                                  },
-                                                                  btnText:
-                                                                      'حذف الحساب',
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          15.sp,
-                                                                      color: Colors
-                                                                          .red),
-                                                                  title:
-                                                                      'تحذير !',
-                                                                  body:
-                                                                      'سيودي هذا الى حذف حسابك بشكل نهائي',
-                                                                ); // إظهار الدايلوج المخصص
-                                                              },
-                                                            );
-                                                          },
-                                                          url:
-                                                              'assets/acount_icons/Close_square.png',
-                                                          lable: 'حذف الحساب'),
                                                     ],
                                                   ),
                                                 ),
-                                              ),
+                                                Container(
+                                                  width: 327.w,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.sp),
+                                                  ),
+                                                  child: Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 0.w,
+                                                        top: 16.h,
+                                                        bottom: 12.h,
+                                                        right: 0.w),
+                                                    child: SizedBox(
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          _infoSetting(
+                                                              onTap: () {
+                                                                Get.defaultDialog(
+                                                                    title: 'سياسة الخصوصية',
+                                                                    content: Padding(
+                                                                      padding: const EdgeInsets
+                                                                          .all(
+                                                                          8.0),
+                                                                      child:
+                                                                          Text(
+                                                                        'خصوصية العمل  ',
+                                                                        style: TextStyle(
+                                                                            fontSize:
+                                                                                20.sp),
+                                                                      ),
+                                                                    ));
+                                                              },
+                                                              url:
+                                                                  'assets/order_icon/notebook_fill.png',
+                                                              lable:
+                                                                  'سياسة الخصوصية'),
+                                                          SizedBox(
+                                                            height: 6.h,
+                                                          ),
+                                                          _infoSetting(
+                                                              onTap: () {
+                                                                showDialog(
+                                                                  context: Get
+                                                                      .context!,
+                                                                  builder:
+                                                                      (BuildContext
+                                                                          context) {
+                                                                    return CustomDialog(
+                                                                      icoImage:
+                                                                          'assets/dilog_icon/error.png',
+                                                                      onPressed:
+                                                                          () {
+                                                                        Get.back();
+                                                                        box.remove(
+                                                                            'userId');
+                                                                        box.remove(
+                                                                            'orrderss');
+                                                                        box.remove(
+                                                                            'loction');
+
+                                                                        Get.offAll(
+                                                                            SginUp2());
+                                                                        isGeust =
+                                                                            false;
+                                                                      },
+                                                                      btnText:
+                                                                          'نعم',
+                                                                      style: TextStyle(
+                                                                          fontSize: 15
+                                                                              .sp,
+                                                                          color:
+                                                                              Colors.red),
+                                                                      title:
+                                                                          'تسجيل الخروج',
+                                                                      body:
+                                                                          'هل انت متاكد',
+                                                                    ); // إظهار الدايلوج المخصص
+                                                                  },
+                                                                );
+                                                              },
+                                                              url:
+                                                                  'assets/acount_icons/Logout.png',
+                                                              lable:
+                                                                  'تسجيل الخروج'),
+                                                          SizedBox(
+                                                            height: 6.h,
+                                                          ),
+                                                          _infoSetting(
+                                                              onTap: () {
+                                                                showDialog(
+                                                                  context: Get
+                                                                      .context!,
+                                                                  builder:
+                                                                      (BuildContext
+                                                                          context) {
+                                                                    return CustomDialog(
+                                                                      icoImage:
+                                                                          'assets/dilog_icon/error.png',
+                                                                      onPressed:
+                                                                          () async {
+                                                                        Get.back();
+                                                                        box.remove(
+                                                                            'userId');
+
+                                                                        box.remove(
+                                                                            'orrderss');
+                                                                        Get.offAll(
+                                                                            SginUp2());
+                                                                        isGeust =
+                                                                            false;
+                                                                        var ssd =
+                                                                            await Api.fetchData(path: '/user/del/${userInfo.id}');
+                                                                        print(
+                                                                            ssd);
+                                                                      },
+                                                                      btnText:
+                                                                          'حذف الحساب',
+                                                                      style: TextStyle(
+                                                                          fontSize: 15
+                                                                              .sp,
+                                                                          color:
+                                                                              Colors.red),
+                                                                      title:
+                                                                          'تحذير !',
+                                                                      body:
+                                                                          'سيودي هذا الى حذف حسابك بشكل نهائي',
+                                                                    ); // إظهار الدايلوج المخصص
+                                                                  },
+                                                                );
+                                                              },
+                                                              url:
+                                                                  'assets/acount_icons/Close_square.png',
+                                                              lable:
+                                                                  'حذف الحساب'),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 60.h,
+                                                ),
+                                                Text('يسو للحول البرمجية'),
+                                                Text('جميع الحقوق محفوضة 2024 ')
+                                              ],
                                             ),
-                                            SizedBox(
-                                              height: 60.h,
-                                            ),
-                                            Text('يسو للحول البرمجية'),
-                                            Text('جميع الحقوق محفوضة 2024 ')
+                                            thaem == 2
+                                                ? Align(
+                                                    alignment:
+                                                        Alignment.topRight,
+                                                    child: Image.asset(
+                                                      'assets/theam/pngwing.com (7) 2.png',
+                                                      height: 307.h,
+                                                      width: 119.w,
+                                                    ),
+                                                  )
+                                                : SizedBox.shrink(),
+                                            thaem == 2
+                                                ? Align(
+                                                    alignment:
+                                                        Alignment.topLeft,
+                                                    child: Image.asset(
+                                                      'assets/theam/pngwing.com (7) 1.png',
+                                                      height: 307.h,
+                                                      width: 119.w,
+                                                    ),
+                                                  )
+                                                : SizedBox.shrink(),
+                                            thaem == 2
+                                                ? Align(
+                                                    alignment:
+                                                        Alignment.topCenter,
+                                                    child: Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 50.w),
+                                                      child: Image.asset(
+                                                        'assets/theam/pngwing.com (7) 3.png',
+                                                        height: 90.h,
+                                                        width: 150.w,
+                                                      ),
+                                                    ),
+                                                  )
+                                                : SizedBox.shrink(),
+                                            thaem == 2
+                                                ? Align(
+                                                    alignment:
+                                                        Alignment.topCenter,
+                                                    child: Padding(
+                                                      padding: EdgeInsets.only(
+                                                          right: 80.w),
+                                                      child: Image.asset(
+                                                        'assets/theam/pngwing.com (7) 3.png',
+                                                        height: 70.h,
+                                                        width: 150.w,
+                                                      ),
+                                                    ),
+                                                  )
+                                                : SizedBox.shrink(),
                                           ],
                                         )
                                       : Center(

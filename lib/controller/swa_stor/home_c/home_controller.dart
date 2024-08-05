@@ -379,10 +379,11 @@ class HomeController extends GetxController {
       if (response.statusCode == 200) {
         userInfo = User.fromJson(jsonDecode(response.body)['result']);
         update();
+
         print(jsonDecode(response.body)['result']);
         FirebaseMessaging messaging = FirebaseMessaging.instance;
-
-        messaging.subscribeToTopic('drink');
+        print('topic ${userInfo.birthday.toString().split('T')[0]}');
+        messaging.subscribeToTopic(userInfo.birthday.toString().split('T')[0]);
         return userInfo;
       } else {
         box.remove('userId');

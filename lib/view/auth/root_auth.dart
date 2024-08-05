@@ -22,7 +22,7 @@ class RootAuth extends StatelessWidget {
               child: Stack(
                 children: [
                   Image.asset(
-                    'assets/home_icon/pexels-cottonbro-5590971 (1).jpg',
+                    'assets/acount_icons/photo_2024-08-05_14-03-44.jpg',
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
