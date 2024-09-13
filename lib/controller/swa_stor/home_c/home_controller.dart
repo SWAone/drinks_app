@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:prostore/api/api.dart';
+import 'package:prostore/controller/swa_stor/nav/nav_bar_controller.dart';
 import 'package:prostore/main.dart';
 import 'package:prostore/model/ads_model.dart';
 import 'package:prostore/model/category_model.dart';
@@ -15,7 +16,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 
 class HomeController extends GetxController {
   List<ItemModel> products = [];
-
+  NavBarController navBarController = Get.put(NavBarController());
   List<ItemModel> filterProdeucts = [];
   String serchText = '';
   List<ItemModel> sortedProdect = [];
@@ -76,6 +77,14 @@ class HomeController extends GetxController {
   int skipMostProduct = 0;
   bool isMostProductTap = false;
   bool isSerch = false;
+  getTheam() async {
+    var a = await http.get(Uri.parse('${Api.apiUrl}/theam'));
+    print(a.body);
+    thaem = jsonDecode(a.body)['result']['theam'];
+    navBarController.update();
+    update();
+  }
+
   void onInit() async {
     // filterScrollController.addListener(() async {
     //   print(filterScrollController.position.pixels);
@@ -84,7 +93,7 @@ class HomeController extends GetxController {
     //     print('ss${filterScrollController}');
     //   }
     // });
-
+    getTheam();
     serchScrollController.addListener(() {
       if (filterScrollController.position.pixels ==
           filterScrollController.position.maxScrollExtent) {
@@ -382,8 +391,10 @@ class HomeController extends GetxController {
 
         print(jsonDecode(response.body)['result']);
         FirebaseMessaging messaging = FirebaseMessaging.instance;
-        print('topic ${userInfo.birthday.toString().split('T')[0]}');
-        messaging.subscribeToTopic(userInfo.birthday.toString().split('T')[0]);
+        print(
+            'topic ${userInfo.birthday.toString().split('T')[0].replaceAll('-', '')}');
+        messaging.subscribeToTopic(
+            userInfo.birthday.toString().split('T')[0].replaceAll('-', ''));
         return userInfo;
       } else {
         box.remove('userId');

@@ -38,7 +38,7 @@ class HomePageSc extends StatelessWidget {
           CategoryMdel.skip = 0;
           AdsModel.skip = 0;
           homeController.adss.clear();
-
+          homeController.getTheam();
           homeController.products.clear();
           homeController.sortedProdect.clear();
           homeController.categores.clear();
@@ -97,7 +97,9 @@ class HomePageSc extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(right: 16.w),
                               child: Text(
-                                'اهلا بك ${userInfo.name}',
+                                userInfo.name != 'null'
+                                    ? 'اهلا بك ${userInfo.name}'
+                                    : 'اهلا بك',
                                 style: TextStyle(
                                     color: HexColor('#354369'),
                                     fontSize: 18.sp),
@@ -396,8 +398,9 @@ class HomePageSc extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8)),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Image.network(
-                  '${Api.imgsPath}${i.img}',
+                child: CachedNetworkImage(
+                  imageUrl: "${Api.imgsPath}${i.img}",
+                  errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
             );

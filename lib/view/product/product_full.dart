@@ -6,6 +6,7 @@ import 'package:prostore/controller/swa_stor/home_c/home_controller.dart';
 import 'package:prostore/main.dart';
 import 'package:prostore/model/item_model.dart';
 import 'package:prostore/view/auth/sgin_up2.dart';
+import 'package:prostore/widget/app_boton.dart';
 import 'package:prostore/widget/app_head_icon.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -232,8 +233,8 @@ class ProductFull extends StatelessWidget {
                         ],
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () async {
+                    AppBoton(
+                      onTap: () {
                         cashController.adminSendOrderControler.clear();
                         cashController.update();
                         if (!isGeust) {
@@ -252,61 +253,42 @@ class ProductFull extends StatelessWidget {
                           isGeust = false;
                         }
                       },
-                      child: Container(
-                        height: 70,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(0.sp),
-                                topRight: Radius.circular(0.sp)),
-                            color: HexColor('#354369')),
-                        child: !isGeust
-                            ? Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    child: Text(
-                                      maxLines: 1,
-                                      cashController.isLiked(
-                                              item.id!, box.read('f6') ?? [])
-                                          ? "اتمام الشراء"
-                                          : 'اضافة الى السلة',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20.sp,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 13.w,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(bottom: 4.h),
-                                    child: Image.asset(
-                                      'assets/product_full_icon/Filled.png',
-                                      width: 24.w,
-                                      height: 24.h,
-                                    ),
-                                  )
-                                ],
-                              )
-                            : Center(
-                                child: SizedBox(
-                                  width: 300.w,
-                                  child: Text(
-                                    maxLines: 1,
-                                    "انشاء حساب لاتمام الشراء",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20.sp,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                      ),
-                    )
+                      titel:
+                          cashController.isLiked(item.id!, box.read('f6') ?? [])
+                              ? "اتمام الشراء"
+                              : 'اضافة الى السلة',
+                    ),
+                    // GestureDetector(
+                    //   onTap: () async {
+
+                    //   },
+                    //   child: Container(
+                    //     height: 70,
+                    //     width: double.infinity,
+                    //     decoration: BoxDecoration(
+                    //         borderRadius: BorderRadius.only(
+                    //             topLeft: Radius.circular(0.sp),
+                    //             topRight: Radius.circular(0.sp)),
+                    //         color: HexColor('#354369')),
+                    //     child: !isGeust
+                    //         ?
+
+                    //         : Center(
+                    //             child: SizedBox(
+                    //               width: 300.w,
+                    //               child: Text(
+                    //                 maxLines: 1,
+                    //                 "انشاء حساب لاتمام الشراء",
+                    //                 textAlign: TextAlign.center,
+                    //                 style: TextStyle(
+                    //                   color: Colors.white,
+                    //                   fontSize: 20.sp,
+                    //                 ),
+                    //               ),
+                    //             ),
+                    //           ),
+                    //   ),
+                    // )
                   ],
                 ),
               );

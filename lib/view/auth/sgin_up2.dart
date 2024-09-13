@@ -89,27 +89,53 @@ class SginUp2 extends StatelessWidget {
                                         sginCtrl.loction = p0;
                                       },
                                       botomPading: 44,
-                                      lable: 'الموقع',
+                                      lable: 'المنطقة',
                                     ),
                                     SizedBox(
-                                      height: 20.h,
+                                      height: 25.h,
                                     ),
                                     GestureDetector(
-                                        onTap: () async {
-                                          await sginCtrl
+                                        onTap: () {
+                                          sginCtrl
                                               .selectDate(context)
                                               .toString();
                                         },
-                                        child: Text(
-                                          'تاريخ الميلاد',
-                                          style: TextStyle(
-                                              fontSize: 17.sp,
-                                              decoration:
-                                                  TextDecoration.underline,
-                                              color: Colors.blue),
+                                        child: Padding(
+                                          padding: EdgeInsets.only(right: 30.w),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                'تاريخ الميلاد',
+                                                style: TextStyle(
+                                                  fontSize: 17.sp,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 10.w,
+                                              ),
+                                              Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 10.h,
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Container(
+                                                        width: 190.w,
+                                                        height: 1.h,
+                                                        color: Colors.black
+                                                            .withOpacity(0.4),
+                                                      ),
+                                                      Icon(Icons.arrow_drop_up)
+                                                    ],
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
                                         )),
                                     SizedBox(
-                                      height: 10.h,
+                                      height: 20.h,
                                     ),
                                     Center(
                                       child: GestureDetector(
@@ -165,6 +191,22 @@ class SginUp2 extends StatelessWidget {
                         ),
                       ),
                     ),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: IconButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        icon: Padding(
+                          padding: EdgeInsets.only(
+                            top: 30.h,
+                          ),
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                          ),
+                        )),
                   )
                 ],
               ),

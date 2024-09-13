@@ -12,10 +12,12 @@ import 'package:prostore/controller/swa_stor/home_c/home_controller.dart';
 import 'package:prostore/controller/swa_stor/home_c/setting_controller.dart';
 import 'package:prostore/main.dart';
 import 'package:prostore/view/acount/seting_page.dart';
+import 'package:prostore/view/auth/root_auth.dart';
 import 'package:prostore/view/auth/sgin_up2.dart';
 import 'package:prostore/widget/app_boton.dart';
 import 'package:prostore/widget/dilogg/customdilog.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class AcountSc extends StatelessWidget {
   HomeController homeController = Get.put(HomeController());
@@ -119,10 +121,9 @@ class AcountSc extends StatelessWidget {
                                                             Padding(
                                                               padding: EdgeInsets
                                                                   .only(
-                                                                      left:
-                                                                          13.w,
+                                                                      left: 5.w,
                                                                       right:
-                                                                          13.w),
+                                                                          5.w),
                                                               child: Container(
                                                                 padding: EdgeInsets
                                                                     .only(
@@ -345,6 +346,24 @@ class AcountSc extends StatelessWidget {
                                                           ),
                                                           _infoSetting(
                                                               onTap: () {
+                                                                print(userInfo
+                                                                    .birthday!
+                                                                    .split(
+                                                                        'T')[0]
+                                                                    .replaceAll(
+                                                                        '-',
+                                                                        ''));
+                                                                FirebaseMessaging
+                                                                    ff =
+                                                                    FirebaseMessaging
+                                                                        .instance;
+                                                                ff.unsubscribeFromTopic(userInfo
+                                                                    .birthday!
+                                                                    .split(
+                                                                        'T')[0]
+                                                                    .replaceAll(
+                                                                        '-',
+                                                                        ''));
                                                                 showDialog(
                                                                   context: Get
                                                                       .context!,
@@ -365,7 +384,7 @@ class AcountSc extends StatelessWidget {
                                                                             'loction');
 
                                                                         Get.offAll(
-                                                                            SginUp2());
+                                                                            RootAuth());
                                                                         isGeust =
                                                                             false;
                                                                       },
@@ -614,7 +633,7 @@ class AcountSc extends StatelessWidget {
               Color(0xFFD3C6E0),
               Color(0xFFC0D3E4),
             ],
-            stops: [0.0, 0.2, 0.5, 1.0],
+            stops: [0.0, 0.2, 0.2, 1.0],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),

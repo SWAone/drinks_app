@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:prostore/controller/order_controleer.dart';
+import 'package:prostore/controller/swa_stor/home_c/home_controller.dart';
 import 'package:prostore/controller/swa_stor/nav/nav_bar_controller.dart';
 import 'package:prostore/main.dart';
 import 'package:prostore/view/home_page.dart';
@@ -14,6 +15,8 @@ import 'view/acount/acount_sc.dart';
 
 class NavBar extends StatelessWidget {
   OrderController orderController = Get.put(OrderController());
+  HomeController homc = Get.put(HomeController());
+
   NavBar({super.key});
   List sc = [
     HomePageSc(),
@@ -81,6 +84,7 @@ class NavBar extends StatelessWidget {
                       lable: 'الحساب',
                       isSelected: controller.pageIndex == 3,
                       onTap: () {
+                        homc.getUserInfo(userId: userInfo.id!);
                         controller.chingPageIndex(3);
                       },
                     ),

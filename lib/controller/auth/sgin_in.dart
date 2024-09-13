@@ -17,10 +17,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:geolocator/geolocator.dart';
 // import 'package:geocoding/geocoding.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class SginInController extends GetxController {
   HomeController homeController = Get.put(HomeController());
-
   GlobalKey<FormState> keyy = new GlobalKey<FormState>();
   GlobalKey<FormState> key2 = new GlobalKey<FormState>();
   String? name, password, phone, loction;
@@ -32,6 +32,22 @@ class SginInController extends GetxController {
   }
 
   Future<void> sginIn() async {
+    if (firstTime.toString().split('-')[0] == '0000') {
+      return showDialog(
+        context: Get.context!,
+        builder: (BuildContext context) {
+          return CustomDialog(
+            onPressed: () {
+              Get.back();
+            },
+            btnText: 'حسنا',
+            style: TextStyle(fontSize: 15.sp, color: Colors.red),
+            title: 'انتبه',
+            body: 'يرجى ادخال تاريخ ميلادك الصحيح ',
+          );
+        },
+      );
+    }
     navBarController.chingPageIndex(0);
 
     loding = true;
@@ -61,11 +77,19 @@ class SginInController extends GetxController {
         );
 
         if (response.statusCode == 200) {
+          FirebaseMessaging fbc = FirebaseMessaging.instance;
+
           await box.write('isGeust', false);
           print('=================');
           print(response.body);
+          print(
+              'subbbb ${jsonDecode(response.body)['result']['birthday'].split('T')[0].replaceAll('-', '')}');
+          fbc.subscribeToTopic(jsonDecode(response.body)['result']['birthday']
+              .split('T')[0]
+              .replaceAll('-', ''));
           box.write('userId', jsonDecode(response.body)['result']['_id']);
           userInfo = User.fromJson(jsonDecode(response.body)['result']);
+
           print(userInfo.id);
           Get.to(NavBar());
         } else {
@@ -119,6 +143,7 @@ class SginInController extends GetxController {
       );
 
       if (response.statusCode == 200) {
+        FirebaseMessaging ff = FirebaseMessaging.instance;
         isGeust = false;
         await box.remove('isGeust');
         update();
@@ -128,6 +153,10 @@ class SginInController extends GetxController {
         userInfo = await homeController.getUserInfo(
             userId: jsonDecode(response.body)['user']['_id']);
         update();
+        ff.subscribeToTopic(jsonDecode(response.body)['user']['birthday']
+            .toString()
+            .split('T')[0]
+            .replaceAll('-', ''));
         Get.to(NavBar());
       } else {
         showDialog(

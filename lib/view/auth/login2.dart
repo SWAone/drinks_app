@@ -75,7 +75,7 @@ class Login2 extends StatelessWidget {
                                       lable: 'كلمة السر',
                                     ),
                                     SizedBox(
-                                      height: 10.h,
+                                      height: 80.h,
                                     ),
                                     Center(
                                       child: GestureDetector(
@@ -131,6 +131,22 @@ class Login2 extends StatelessWidget {
                         ],
                       ),
                     ),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: IconButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        icon: Padding(
+                          padding: EdgeInsets.only(
+                            top: 30.h,
+                          ),
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                          ),
+                        )),
                   )
                 ],
               ),

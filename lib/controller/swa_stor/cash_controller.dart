@@ -169,8 +169,10 @@ class CashController extends GetxController {
         // Get.back();
         box.remove('f6');
         paskketProducts.clear();
-
-        Get.to(() => CheckOutOrder());
+        navBarController.chingPageIndex(2);
+        orderController.skip = 0;
+        orderController.getUserOrder(isFirstReq: true);
+        // Get.to(() => CheckOutOrder());
       },
     );
     totlprice = 0;
