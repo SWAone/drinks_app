@@ -27,7 +27,7 @@ void main() async {
   isGeust = await box.read('isGeust') ?? false;
   await Firebase.initializeApp();
   FirebaseMessaging messaging = FirebaseMessaging.instance;
-  messaging.subscribeToTopic('drink');
+  messaging.subscribeToTopic('drink1');
 
   runApp(MyApp());
 }

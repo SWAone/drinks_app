@@ -152,12 +152,22 @@ class CashController extends GetxController {
       },
       sucsues: (respons) async {
         print(respons['result']);
-        FCMService fcm = FCMService();
+        try {
+          await Api.postData(
+            path: '/send',
+            body: {
+              "title": 'طلب جديد',
+              "body": 'مرسل الطلب ${userInfo.name}',
+              "topic": 'order'
+            },
+            sucsues: (respons) {
+              print(respons);
+            },
+          );
+        } catch (e) {
+          print('eror notfction $e');
+        }
 
-        await fcm.sendNotifications(
-            body: 'هناك طلب من ${userInfo.name}',
-            title: 'طلب جديد',
-            topc: 'order');
         orderController.orders.add(Order.fromJson(respons['result']));
         orderController.update();
         orderController.counter += 1;

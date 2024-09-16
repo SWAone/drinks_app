@@ -13,6 +13,7 @@ import 'package:prostore/model/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:prostore/view/auth/login2.dart';
 
 class HomeController extends GetxController {
   List<ItemModel> products = [];
@@ -78,14 +79,18 @@ class HomeController extends GetxController {
   bool isMostProductTap = false;
   bool isSerch = false;
   getTheam() async {
-    var a = await http.get(Uri.parse('${Api.apiUrl}/theam'));
-    print(a.body);
-    thaem = jsonDecode(a.body)['result']['theam'];
-    navBarController.update();
-    update();
+    try {
+      var a = await http.get(Uri.parse('${Api.apiUrl}/theam'));
+      print(a.body);
+      thaem = jsonDecode(a.body)['result']['theam'];
+      navBarController.update();
+      update();
+    } catch (e) {}
   }
 
   void onInit() async {
+    // box.remove('userId');
+    // Get.offAll(Login2());
     // filterScrollController.addListener(() async {
     //   print(filterScrollController.position.pixels);
     //   if (filterScrollController.position.pixels ==
@@ -401,6 +406,8 @@ class HomeController extends GetxController {
         // Get.offAll(SignUpPage());
       }
     } catch (e) {
+      box.remove('userId');
+      Get.offAll(Login2());
       print('eroooer  $e');
     }
   }

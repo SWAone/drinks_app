@@ -18,6 +18,7 @@ import 'package:prostore/widget/home_widget/app_product.dart';
 import 'package:get/get.dart';
 import 'package:prostore/widget/loding/product_loding.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomePageSc extends StatelessWidget {
   HomeController homeController = Get.put(HomeController());
@@ -122,48 +123,97 @@ class HomePageSc extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              // color: Colors.red,
-                              height: 100.h,
-                              child: ListView.builder(
-                                physics: BouncingScrollPhysics(),
-                                padding: EdgeInsets.only(left: 10.w, top: 13.h),
-                                itemCount: controler.categores.length,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) {
-                                  return GestureDetector(
-                                    onTap: () {
-                                      controler.catogoryId = controler
-                                          .categores[index].id
-                                          .toString();
-                                      controler.isCatgoryDisplyOnAllPrductPage =
-                                          true;
-                                      print('object');
+                            controler.categores.isNotEmpty
+                                ? Container(
+                                    // color: Colors.red,
+                                    height: 100.h,
+                                    child: ListView.builder(
+                                      physics: BouncingScrollPhysics(),
+                                      padding: EdgeInsets.only(
+                                          left: 10.w, top: 13.h),
+                                      itemCount: controler.categores.length,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index) {
+                                        return GestureDetector(
+                                          onTap: () {
+                                            controler.catogoryId = controler
+                                                .categores[index].id
+                                                .toString();
+                                            controler
+                                                    .isCatgoryDisplyOnAllPrductPage =
+                                                true;
+                                            print('object');
 
-                                      controler.getElemntByCategory(
-                                          isFirstTime: true,
-                                          categoryId: controler
-                                              .categores[index].id
-                                              .toString());
-                                      Get.to(AllProductsPage(
-                                          title: controler
-                                              .categores[index].title![lanIndx],
-                                          items: controler.itemByCategory));
-                                    },
-                                    child: Padding(
-                                        padding: EdgeInsets.only(right: 10.w),
-                                        child: catoCircl(
-                                            '${Api.imgsPath}${controler.categores[index].img!}',
-                                            controler.categores[index].title!)),
-                                  );
-                                },
-                              ),
-                            ),
+                                            controler.getElemntByCategory(
+                                                isFirstTime: true,
+                                                categoryId: controler
+                                                    .categores[index].id
+                                                    .toString());
+                                            Get.to(AllProductsPage(
+                                                title: controler
+                                                    .categores[index]
+                                                    .title![lanIndx],
+                                                items:
+                                                    controler.itemByCategory));
+                                          },
+                                          child: Padding(
+                                              padding:
+                                                  EdgeInsets.only(right: 10.w),
+                                              child: catoCircl(
+                                                  '${Api.imgsPath}${controler.categores[index].img!}',
+                                                  controler.categores[index]
+                                                      .title!)),
+                                        );
+                                      },
+                                    ),
+                                  )
+                                : SizedBox(
+                                    height: 100.h,
+                                    child: ListView.separated(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 10.w),
+                                      separatorBuilder: (context, index) {
+                                        return SizedBox(
+                                          width: 10.w,
+                                        );
+                                      },
+                                      itemCount: 10,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index) {
+                                        return Shimmer.fromColors(
+                                          child: Center(
+                                              child: CircleAvatar(
+                                            radius: 30.r,
+                                          )),
+                                          baseColor: Colors.grey[300]!,
+                                          highlightColor: Colors.grey[100]!,
+                                        );
+                                      },
+                                    ),
+                                  ),
                             SizedBox(
                               height: 13.h,
                             ),
-                            _customSliderImage(),
+                            homeController.adss.isNotEmpty
+                                ? _customSliderImage()
+                                : Shimmer.fromColors(
+                                    child: Center(
+                                      child: Container(
+                                        width: 320.w,
+                                        height: 180.h,
+                                        margin: EdgeInsets.symmetric(
+                                            horizontal: 8.w),
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(8.r)),
+                                      ),
+                                    ),
+                                    baseColor: Colors.grey[300]!,
+                                    highlightColor: Colors.grey[100]!,
+                                  ),
                             Padding(
                               padding: EdgeInsets.only(
                                   top: 17.h, bottom: 22.h, right: 10.w),
