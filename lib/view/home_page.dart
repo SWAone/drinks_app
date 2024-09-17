@@ -225,6 +225,7 @@ class HomePageSc extends StatelessWidget {
                               ),
                             ),
                             Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
                                     alignment: Alignment.center,
@@ -243,9 +244,11 @@ class HomePageSc extends StatelessWidget {
                                           : 3,
                                       itemBuilder: (context, index) {
                                         return controler.products.isNotEmpty
-                                            ? AppProduct(
-                                                prodct:
-                                                    controler.products[index])
+                                            ? Center(
+                                                child: AppProduct(
+                                                    prodct: controler
+                                                        .products[index]),
+                                              )
                                             : ProductsLoding();
                                       },
                                     )),
