@@ -80,6 +80,9 @@ class OrderDetelis extends StatelessWidget {
                                                   width: 87.w,
                                                   height: 130.h,
                                                 ),
+                                                SizedBox(
+                                                  width: 10.w,
+                                                ),
                                                 Column(
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,

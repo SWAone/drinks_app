@@ -227,150 +227,162 @@ class CartSc extends StatelessWidget {
                   //         )
                   //       : SizedBox.shrink(),
                   // ),
-                  cashController.newOrderLOding
-                      ? LottieBuilder.asset(
-                          'assets/anmtions/home_anmtion/mainLoding.json',
-                          width: 30.w,
-                          height: 68.h,
-                        )
-                      : AppBoton(
-                          titel: 'التالي',
-                          botomPading: 5,
-                          onTap: () async {
-                            showModalBottomSheet(
-                              context: context,
-                              builder: (context) {
-                                return GetBuilder<CashController>(
-                                    init: CashController(),
-                                    builder: (co) {
-                                      return Container(
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(30.r)),
-                                        width: double.infinity,
-                                        child: Column(
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  top: 35.h, bottom: 20.h),
-                                              child: Text(
-                                                'اضف ملاحظاتك',
-                                                style: TextStyle(
-                                                    fontSize: 22.w,
-                                                    fontWeight:
-                                                        FontWeight.w800),
-                                              ),
-                                            ),
-                                            SizedBox(height: 20.h),
-                                            Row(
+                  cashController.paskketProducts.isNotEmpty
+                      ? cashController.newOrderLOding
+                          ? LottieBuilder.asset(
+                              'assets/anmtions/home_anmtion/mainLoding.json',
+                              width: 30.w,
+                              height: 68.h,
+                            )
+                          : AppBoton(
+                              titel: 'التالي',
+                              botomPading: 5,
+                              onTap: () async {
+                                showModalBottomSheet(
+                                  context: context,
+                                  builder: (context) {
+                                    return GetBuilder<CashController>(
+                                        init: CashController(),
+                                        builder: (co) {
+                                          return Container(
+                                            decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        30.r)),
+                                            width: double.infinity,
+                                            child: Column(
                                               children: [
-                                                Checkbox(
-                                                  value: cashController.suger,
-                                                  onChanged: (value) {
-                                                    cashController.suger =
-                                                        value!;
-                                                    cashController.update();
-                                                  },
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      top: 35.h, bottom: 20.h),
+                                                  child: Text(
+                                                    'اضف ملاحظاتك',
+                                                    style: TextStyle(
+                                                        fontSize: 22.w,
+                                                        fontWeight:
+                                                            FontWeight.w800),
+                                                  ),
                                                 ),
-                                                Text(
-                                                  'شكر',
-                                                  style: TextStyle(
-                                                      fontSize: 19.w,
-                                                      fontWeight:
-                                                          FontWeight.w800),
+                                                SizedBox(height: 20.h),
+                                                Row(
+                                                  children: [
+                                                    Checkbox(
+                                                      value:
+                                                          cashController.suger,
+                                                      onChanged: (value) {
+                                                        cashController.suger =
+                                                            value!;
+                                                        cashController.update();
+                                                      },
+                                                    ),
+                                                    Text(
+                                                      'شكر',
+                                                      style: TextStyle(
+                                                          fontSize: 19.w,
+                                                          fontWeight:
+                                                              FontWeight.w800),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                Checkbox(
-                                                  value: cashController.gas,
-                                                  onChanged: (value) {
-                                                    cashController.gas = value!;
-                                                    cashController.update();
-                                                  },
+                                                Row(
+                                                  children: [
+                                                    Checkbox(
+                                                      value: cashController.gas,
+                                                      onChanged: (value) {
+                                                        cashController.gas =
+                                                            value!;
+                                                        cashController.update();
+                                                      },
+                                                    ),
+                                                    Text(
+                                                      'غاز',
+                                                      style: TextStyle(
+                                                          fontSize: 19.w,
+                                                          fontWeight:
+                                                              FontWeight.w800),
+                                                    ),
+                                                  ],
                                                 ),
-                                                Text(
-                                                  'غاز',
-                                                  style: TextStyle(
-                                                      fontSize: 19.w,
-                                                      fontWeight:
-                                                          FontWeight.w800),
+                                                Row(
+                                                  children: [
+                                                    Checkbox(
+                                                      value:
+                                                          cashController.millk,
+                                                      onChanged: (value) {
+                                                        cashController.millk =
+                                                            value!;
+                                                        cashController.update();
+                                                      },
+                                                    ),
+                                                    Text(
+                                                      'حليب',
+                                                      style: TextStyle(
+                                                          fontSize: 19.w,
+                                                          fontWeight:
+                                                              FontWeight.w800),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                Checkbox(
-                                                  value: cashController.millk,
-                                                  onChanged: (value) {
-                                                    cashController.millk =
-                                                        value!;
-                                                    cashController.update();
-                                                  },
-                                                ),
-                                                Text(
-                                                  'حليب',
-                                                  style: TextStyle(
-                                                      fontSize: 19.w,
-                                                      fontWeight:
-                                                          FontWeight.w800),
-                                                ),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  left: 20.w,
-                                                  right: 20.w,
-                                                  bottom: 30.h,
-                                                  top: 20.h),
-                                              child: Container(
-                                                  alignment: Alignment.center,
-                                                  decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.r),
-                                                      border: Border.all(
-                                                          color: Colors.grey
-                                                              .withOpacity(
-                                                                  0.5))),
-                                                  child: Center(
-                                                      child: TextFormField(
-                                                    controller: cashController
-                                                        .adminSendOrderControler,
-                                                    decoration: InputDecoration(
-                                                        label: Text(
-                                                            'كتابة ملاحظة'),
-                                                        isDense: true,
-                                                        contentPadding:
-                                                            EdgeInsets.symmetric(
-                                                                vertical: 8.h,
-                                                                horizontal: 8
-                                                                    .w), // تقليل الهوامش الداخلية
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: 20.w,
+                                                      right: 20.w,
+                                                      bottom: 30.h,
+                                                      top: 20.h),
+                                                  child: Container(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10.r),
+                                                          border: Border.all(
+                                                              color: Colors.grey
+                                                                  .withOpacity(
+                                                                      0.5))),
+                                                      child: Center(
+                                                          child: TextFormField(
+                                                        controller: cashController
+                                                            .adminSendOrderControler,
+                                                        decoration:
+                                                            InputDecoration(
+                                                                label: Text(
+                                                                    'كتابة ملاحظة'),
+                                                                isDense: true,
+                                                                contentPadding:
+                                                                    EdgeInsets.symmetric(
+                                                                        vertical:
+                                                                            8.h,
+                                                                        horizontal: 8
+                                                                            .w), // تقليل الهوامش الداخلية
 
-                                                        border:
-                                                            InputBorder.none),
-                                                  ))),
+                                                                border:
+                                                                    InputBorder
+                                                                        .none),
+                                                      ))),
+                                                ),
+                                                AppBoton(
+                                                  onTap: () {
+                                                    Get.back();
+                                                    if (cashController
+                                                            .totlprice >
+                                                        0) {
+                                                      cashController.newOrder();
+                                                    }
+                                                  },
+                                                  titel: 'شراء',
+                                                )
+                                              ],
                                             ),
-                                            AppBoton(
-                                              onTap: () {
-                                                Get.back();
-                                                if (cashController.totlprice >
-                                                    0) {
-                                                  cashController.newOrder();
-                                                }
-                                              },
-                                              titel: 'شراء',
-                                            )
-                                          ],
-                                        ),
-                                      );
-                                    });
+                                          );
+                                        });
+                                  },
+                                );
                               },
-                            );
-                          },
-                        ),
+                            )
+                      : SizedBox.shrink(),
                   SizedBox(
                     height: 10.h,
                   )
@@ -386,7 +398,7 @@ class CartSc extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            margin: EdgeInsets.only(top: 25.h),
+            margin: EdgeInsets.only(top: 0.h),
             width: 320.w,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.sp),
@@ -563,15 +575,15 @@ class CartSc extends StatelessWidget {
           ),
           Column(
             children: [
-              Container(
-                width: 70.w.w,
+              SizedBox(
+                width: 70.w,
                 child: Align(
                   alignment: Alignment.topRight,
                   child: CachedNetworkImage(
                     fit: BoxFit.fitHeight,
                     fadeOutDuration: Duration(milliseconds: 0),
                     width: 70.85.w,
-                    height: 122.h,
+                    height: 90.h,
                     imageUrl: "${Api.imgsPath}${item.imags}",
                     errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
