@@ -5,6 +5,7 @@ import 'package:prostore/controller/swa_stor/cash_controller.dart';
 import 'package:prostore/controller/swa_stor/home_c/home_controller.dart';
 import 'package:prostore/main.dart';
 import 'package:prostore/model/item_model.dart';
+import 'package:prostore/view/auth/root_auth.dart';
 import 'package:prostore/view/auth/sgin_up2.dart';
 import 'package:prostore/widget/app_boton.dart';
 import 'package:prostore/widget/app_head_icon.dart';
@@ -233,31 +234,39 @@ class ProductFull extends StatelessWidget {
                         ],
                       ),
                     ),
-                    AppBoton(
-                      onTap: () {
-                        cashController.adminSendOrderControler.clear();
-                        cashController.update();
-                        if (!isGeust) {
-                          cashController.insertTocash(
-                              item.id!,
-                              'f6',
-                              'product',
-                              cashController.ele,
-                              cashController.paskketProducts,
-                              cashController,
-                              item);
-                          cashController.update();
-                        } else {
-                          Get.offAll(() => SginUp2());
-                          box.remove('userId');
-                          isGeust = false;
-                        }
-                      },
-                      titel:
-                          cashController.isLiked(item.id!, box.read('f6') ?? [])
-                              ? "اتمام الشراء"
-                              : 'اضافة الى السلة',
-                    ),
+                    box.read('isSkipLogin') ?? false
+                        ? AppBoton(
+                            onTap: () {
+                              Get.offAll(() => RootAuth());
+                            },
+                            titel: 'انشاء حساب لارسال طلب',
+                          )
+                        : AppBoton(
+                            onTap: () {
+                              cashController.adminSendOrderControler.clear();
+                              cashController.update();
+                              if (!isGeust) {
+                                cashController.insertTocash(
+                                    item.id!,
+                                    'f6',
+                                    'product',
+                                    cashController.ele,
+                                    cashController.paskketProducts,
+                                    cashController,
+                                    item);
+                                cashController.update();
+                              } else {
+                                Get.offAll(() => SginUp2());
+                                box.remove('userId');
+                                isGeust = false;
+                              }
+                            },
+                            titel: cashController.isLiked(
+                                    item.id!, box.read('f6') ?? [])
+                                ? "اتمام الشراء"
+                                : 'اضافة الى السلة',
+                          )
+
                     // GestureDetector(
                     //   onTap: () async {
 

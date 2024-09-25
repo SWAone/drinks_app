@@ -12,7 +12,7 @@ import 'package:prostore/model/item_model.dart';
 import 'package:prostore/model/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+//import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:prostore/view/auth/login2.dart';
 
 class HomeController extends GetxController {
@@ -379,6 +379,10 @@ class HomeController extends GetxController {
   }
 
   getUserInfo({required String userId}) async {
+    if (await box.read('isSkipLogin') ?? false) {
+      print('skip login >>>>>>');
+      return;
+    }
     print('get user infff');
     try {
       if (box.read('isGeust') ?? false) {
@@ -395,11 +399,11 @@ class HomeController extends GetxController {
         update();
 
         print(jsonDecode(response.body)['result']);
-        FirebaseMessaging messaging = FirebaseMessaging.instance;
+        // FirebaseMessaging messaging = FirebaseMessaging.instance;
         print(
             'topic ${userInfo.birthday.toString().split('T')[0].replaceAll('-', '')}');
-        messaging.subscribeToTopic(
-            userInfo.birthday.toString().split('T')[0].replaceAll('-', ''));
+        // messaging.subscribeToTopic(
+        //     userInfo.birthday.toString().split('T')[0].replaceAll('-', ''));
         return userInfo;
       } else {
         box.remove('userId');

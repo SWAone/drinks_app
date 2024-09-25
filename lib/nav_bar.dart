@@ -83,8 +83,11 @@ class NavBar extends StatelessWidget {
                       iconurl: 'assets/navbar_icon/user.png',
                       lable: 'الحساب',
                       isSelected: controller.pageIndex == 3,
-                      onTap: () {
-                        homc.getUserInfo(userId: userInfo.id!);
+                      onTap: () async {
+                        homc.getUserInfo(
+                            userId: await box.read('isSkipLogin') ?? false
+                                ? 'a'
+                                : userInfo.id!);
                         controller.chingPageIndex(3);
                       },
                     ),

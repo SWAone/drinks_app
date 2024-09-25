@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:prostore/const/app_color.dart';
 import 'package:prostore/controller/auth/sgin_in.dart';
+import 'package:prostore/main.dart';
+import 'package:prostore/nav_bar.dart';
 import 'package:prostore/view/auth/login2.dart';
 import 'package:prostore/view/auth/sgin_up2.dart';
 import 'package:prostore/widget/app_input.dart';
@@ -137,7 +140,33 @@ class FadeContainer extends StatelessWidget {
                                 color: Colors.white),
                           ))),
                 ),
-              )
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              GestureDetector(
+                onTap: () async {
+                  await box.write('isSkipLogin', true);
+
+                  Get.to(NavBar());
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      // color: HexColor('#354369'),
+                      border: Border.all(color: Colors.black),
+                      borderRadius: BorderRadius.circular(26.5.sp)),
+                  child: Center(
+                      child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 15.h),
+                          child: Text(
+                            'تخطي',
+                            style: TextStyle(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.bold,
+                                color: AppColor.primaryColor),
+                          ))),
+                ),
+              ),
             ],
           ),
         ),

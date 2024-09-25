@@ -4,14 +4,9 @@ import 'package:get/get.dart';
 import 'package:prostore/api/api.dart';
 import 'package:prostore/controller/order_controleer.dart';
 import 'package:prostore/controller/swa_stor/home_c/home_controller.dart';
-import 'package:prostore/main.dart';
 import 'package:prostore/model/order_model.dart';
-import 'package:prostore/nav_bar.dart';
-import 'package:prostore/view/order/my_orders.dart';
-import 'package:prostore/widget/app_boton.dart';
 import 'package:prostore/widget/app_head_icon.dart';
 import 'package:prostore/widget/home_widget/app_head.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
 
 class OrderDetelis extends StatelessWidget {

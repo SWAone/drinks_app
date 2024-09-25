@@ -17,7 +17,7 @@ import 'package:prostore/view/auth/sgin_up2.dart';
 import 'package:prostore/widget/app_boton.dart';
 import 'package:prostore/widget/dilogg/customdilog.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+//import 'package:firebase_messaging/firebase_messaging.dart';
 
 class AcountSc extends StatelessWidget {
   HomeController homeController = Get.put(HomeController());
@@ -43,7 +43,7 @@ class AcountSc extends StatelessWidget {
                 child: Scaffold(
                   backgroundColor: Colors.white,
                   body: SingleChildScrollView(
-                    child: box.read('isGeust') ?? false
+                    child: box.read('isSkipLogin') ?? false
                         ? Center(
                             child: Column(
                               children: [
@@ -51,22 +51,15 @@ class AcountSc extends StatelessWidget {
                                   margin: EdgeInsets.only(top: 300.h),
                                   width: 327.w,
                                   decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius:
-                                          BorderRadius.circular(10.sp),
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Colors.grey.withOpacity(0.5),
-                                            blurRadius: 9,
-                                            offset: Offset(0, 4)),
-                                      ]),
+                                    borderRadius: BorderRadius.circular(10.sp),
+                                  ),
                                   child: Column(
                                     children: [
                                       Padding(
                                         padding: EdgeInsets.only(
                                             top: 15.h, bottom: 22.h),
                                         child: Text(
-                                          'ليس لديك حساب لادارته ',
+                                          'ليس لديك حساب  ',
                                           style: TextStyle(
                                               color: HexColor('#515151'),
                                               fontSize: 20.sp,
@@ -75,8 +68,9 @@ class AcountSc extends StatelessWidget {
                                       ),
                                       AppBoton(
                                         titel: 'انشاء حساب',
-                                        onTap: () {
-                                          Get.offAll(SginUp2());
+                                        onTap: () async {
+                                          await box.remove('isSkipLogin');
+                                          Get.offAll(() => RootAuth());
                                           isGeust = false;
                                         },
                                       )
@@ -393,24 +387,24 @@ class AcountSc extends StatelessWidget {
                                                           ),
                                                           _infoSetting(
                                                               onTap: () {
-                                                                print(userInfo
-                                                                    .birthday!
-                                                                    .split(
-                                                                        'T')[0]
-                                                                    .replaceAll(
-                                                                        '-',
-                                                                        ''));
-                                                                FirebaseMessaging
-                                                                    ff =
-                                                                    FirebaseMessaging
-                                                                        .instance;
-                                                                ff.unsubscribeFromTopic(userInfo
-                                                                    .birthday!
-                                                                    .split(
-                                                                        'T')[0]
-                                                                    .replaceAll(
-                                                                        '-',
-                                                                        ''));
+                                                                // print(userInfo
+                                                                //     .birthday!
+                                                                //     .split(
+                                                                //         'T')[0]
+                                                                //     .replaceAll(
+                                                                //         '-',
+                                                                //         ''));
+                                                                // FirebaseMessaging
+                                                                //     ff =
+                                                                //     FirebaseMessaging
+                                                                //         .instance;
+                                                                // ff.unsubscribeFromTopic(userInfo
+                                                                //     .birthday!
+                                                                //     .split(
+                                                                //         'T')[0]
+                                                                //     .replaceAll(
+                                                                //         '-',
+                                                                //         ''));
                                                                 showDialog(
                                                                   context: Get
                                                                       .context!,
@@ -429,6 +423,8 @@ class AcountSc extends StatelessWidget {
                                                                             'orrderss');
                                                                         box.remove(
                                                                             'loction');
+                                                                        box.remove(
+                                                                            'isSkipLogin');
 
                                                                         Get.offAll(
                                                                             RootAuth());

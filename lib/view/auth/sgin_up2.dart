@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:prostore/controller/auth/sgin_in.dart';
+import 'package:prostore/main.dart';
 import 'package:prostore/widget/app_input.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -100,38 +101,47 @@ class SginUp2 extends StatelessWidget {
                                               .selectDate(context)
                                               .toString();
                                         },
-                                        child: Padding(
-                                          padding: EdgeInsets.only(right: 30.w),
-                                          child: Row(
-                                            children: [
-                                              Text(
-                                                'تاريخ الميلاد',
-                                                style: TextStyle(
-                                                  fontSize: 17.sp,
+                                        child: Container(
+                                          color: Colors.transparent,
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsets.only(right: 30.w),
+                                            child: Row(
+                                              children: [
+                                                Text(
+                                                  'تاريخ الميلاد',
+                                                  style: TextStyle(
+                                                    fontSize: 17.sp,
+                                                  ),
                                                 ),
-                                              ),
-                                              SizedBox(
-                                                width: 10.w,
-                                              ),
-                                              Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 10.h,
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Container(
-                                                        width: 190.w,
-                                                        height: 1.h,
-                                                        color: Colors.black
-                                                            .withOpacity(0.4),
-                                                      ),
-                                                      Icon(Icons.arrow_drop_up)
-                                                    ],
-                                                  ),
-                                                ],
-                                              )
-                                            ],
+                                                SizedBox(
+                                                  width: 10.w,
+                                                ),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    SizedBox(
+                                                      height: 10.h,
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Container(
+                                                          width: 190.w,
+                                                          height: 1.h,
+                                                          color: Colors.black
+                                                              .withOpacity(0.4),
+                                                        ),
+                                                        Icon(
+                                                            Icons.arrow_drop_up)
+                                                      ],
+                                                    ),
+                                                    Text(
+                                                        ' *لغرض اعياد الميلاد والهدايا')
+                                                  ],
+                                                )
+                                              ],
+                                            ),
                                           ),
                                         )),
                                     SizedBox(
@@ -140,6 +150,8 @@ class SginUp2 extends StatelessWidget {
                                     Center(
                                       child: GestureDetector(
                                         onTap: () {
+                                          box.remove('isSkipLogin');
+
                                           sginCtrl.sginIn();
                                         },
                                         child: !sginCtrl.loding
