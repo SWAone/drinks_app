@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 // import 'package:geolocator/geolocator.dart';
 // import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -184,16 +185,29 @@ class SginInController extends GetxController {
   DateTime? firstTime = DateTime(0);
 
   Future<void> selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1975),
-      lastDate: DateTime(2030),
-    );
-    if (picked != null && picked != firstTime) {
-      firstTime = picked;
-      print(firstTime!.toIso8601String());
+    DatePicker.showDatePicker(context,
+        showTitleActions: true,
+        minTime: DateTime(1970, 3, 5),
+        maxTime: DateTime(2024, 6, 7), onChanged: (date) {
+      firstTime = date;
       update();
-    }
+    }, onConfirm: (date) {
+      update();
+
+      firstTime = date;
+    }, currentTime: DateTime.now(), locale: LocaleType.ar);
+    update();
+    // final DateTime? picked = await showDatePicker(
+
+    //   context: context,
+    //   initialDate: DateTime.now(),
+    //   firstDate: DateTime(1975),
+    //   lastDate: DateTime(2030),
+    // );
+    // if (picked != null && picked != firstTime) {
+    //   firstTime = picked;
+    //   print(firstTime!.toIso8601String());
+    //   update();
+    // }
   }
 }

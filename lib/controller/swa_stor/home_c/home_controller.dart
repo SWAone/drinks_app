@@ -14,6 +14,8 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 //import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:prostore/view/auth/login2.dart';
+import 'package:prostore/view/auth/root_auth.dart';
+import 'package:prostore/view/auth/sgin_up2.dart';
 
 class HomeController extends GetxController {
   List<ItemModel> products = [];
@@ -406,6 +408,9 @@ class HomeController extends GetxController {
         //     userInfo.birthday.toString().split('T')[0].replaceAll('-', ''));
         return userInfo;
       } else {
+        Get.offAll(RootAuth());
+
+        print('noooooooo');
         box.remove('userId');
         // Get.offAll(SignUpPage());
       }

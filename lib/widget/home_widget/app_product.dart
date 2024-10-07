@@ -35,7 +35,7 @@ class AppProduct extends StatelessWidget {
             decoration: BoxDecoration(boxShadow: [
               BoxShadow(
                   color: HexColor('#000000').withOpacity(0.25), blurRadius: 3)
-            ], color: Colors.white, borderRadius: BorderRadius.circular(11.r)),
+            ], color: Colors.black, borderRadius: BorderRadius.circular(11.r)),
             child: CachedNetworkImage(
               width: 144.w,
               height: 180.h,

@@ -509,7 +509,7 @@ class AcountSc extends StatelessWidget {
                                                   height: 60.h,
                                                 ),
                                                 Text('يسو للحلول البرمجية'),
-                                                Text('جميع الحقوق محفوضة 2024 ')
+                                                Text('جميع الحقوق محفوظة 2024 ')
                                               ],
                                             ),
                                             thaem == 2

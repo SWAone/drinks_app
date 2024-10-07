@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -56,8 +57,7 @@ class SginUp2 extends StatelessWidget {
                                       height: 100.h,
                                     ),
                                     AppTextInput(
-                                      keyboardType:
-                                          TextInputType.visiblePassword,
+                                      keyboardType: TextInputType.text,
                                       lable: 'الاسم',
                                       onSaved: (p0) {
                                         sginCtrl.name = p0;
@@ -126,11 +126,27 @@ class SginUp2 extends StatelessWidget {
                                                     ),
                                                     Row(
                                                       children: [
-                                                        Container(
-                                                          width: 190.w,
-                                                          height: 1.h,
-                                                          color: Colors.black
-                                                              .withOpacity(0.4),
+                                                        Column(
+                                                          children: [
+                                                            Text(sginCtrl
+                                                                    .firstTime
+                                                                    .toString()
+                                                                    .isNotEmpty
+                                                                ? sginCtrl
+                                                                    .firstTime
+                                                                    .toString()
+                                                                    .split(
+                                                                        ' ')[0]
+                                                                : ''),
+                                                            Container(
+                                                              width: 190.w,
+                                                              height: 1.h,
+                                                              color: Colors
+                                                                  .black
+                                                                  .withOpacity(
+                                                                      0.4),
+                                                            ),
+                                                          ],
                                                         ),
                                                         Icon(
                                                             Icons.arrow_drop_up)
